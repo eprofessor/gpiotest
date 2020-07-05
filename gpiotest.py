@@ -34,6 +34,8 @@ import random
 import time
 from datetime import datetime
 
+curses.initscr()
+
 def termOn():
     # Enable character buffering and echo
     curses.nocbreak()
@@ -121,9 +123,9 @@ def CheckKeys():
     global debounce
     global on_pause
 
-    myscreen.nodelay(1)
+    myscreen.nodelay(True)
     key = myscreen.getch()
-    myscreen.nodelay(0)
+    myscreen.nodelay(False)
 
     if key == ord('q') or key == ord('Q'):
         raise KeyboardInterrupt
